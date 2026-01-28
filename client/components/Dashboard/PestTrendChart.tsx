@@ -22,10 +22,13 @@ interface PestTrendChartProps {
 }
 
 const PestTrendChart: React.FC<PestTrendChartProps> = ({ data }) => {
-    const chartData = data.map(item => ({
-        time: item.createdAt,
-        count: item.count,
-    }));
+    // 🛠️ SORT & MAP: Ensure data is in chronological order and include time
+    const chartData = [...data]
+        .sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
+        .map(item => ({
+            time: item.createdAt,
+            count: item.count,
+        }));
 
     return (
         <div className="w-full h-full min-h-[450px] bg-[#0f172a]/20 p-2 rounded-[2rem] border border-slate-800/40">
@@ -45,25 +48,28 @@ const PestTrendChart: React.FC<PestTrendChartProps> = ({ data }) => {
 
                     <XAxis
                         dataKey="time"
-                        /* 🛠️ BOLD & BRIGHT LABELS */
                         stroke="#94a3b8"
-                        fontSize={13}
+                        fontSize={11} // Slightly smaller font for the longer label
                         fontWeight={700}
                         tickLine={false}
                         axisLine={false}
-                        angle={0}
-                        textAnchor="end"
                         height={60}
                         interval="preserveStartEnd"
                         minTickGap={35}
+                        /* ✅ UPDATED: Shows Month/Day + Time (HH:MM) */
                         tickFormatter={(str) => {
                             const date = new Date(str);
-                            return `${date.getMonth() + 1}/${date.getDate()}`;
+                            return date.toLocaleTimeString([], {
+                                month: 'numeric',
+                                day: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit',
+                                hour12: false
+                            });
                         }}
                     />
 
                     <YAxis
-                        /* 🛠️ BOLD & BRIGHT LABELS */
                         stroke="#94a3b8"
                         fontSize={13}
                         fontWeight={700}
@@ -78,6 +84,8 @@ const PestTrendChart: React.FC<PestTrendChartProps> = ({ data }) => {
                             border: '1px solid #1e293b',
                             fontWeight: 'bold'
                         }}
+                        /* ✅ ADDED: Makes the tooltip show the full date/time on hover */
+                        labelFormatter={(label) => new Date(label).toLocaleString()}
                     />
 
                     <Line
