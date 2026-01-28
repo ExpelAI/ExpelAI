@@ -12,7 +12,7 @@ connectDB();
 // This allows your local dev environment AND your future live site to talk to the API
 const allowedOrigins = [
     'http://localhost:3000',
-    'https://expel-ai-frontend.vercel.app' // ⬅️ Add your real link here
+    'https://expel-ai-frontend.vercel.app/' // ⬅️ Add your real link here
 ];
 
 app.use(cors({
