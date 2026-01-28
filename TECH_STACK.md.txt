@@ -1,0 +1,8 @@
+# ExpelAI Tech Stack
+
+- **Frontend:** Next.js (React) + Tailwind CSS (for UI/UX and Dashboard).
+- **Backend:** Node.js + Express (handling APIs and logic).
+- **Database:** MongoDB (storing pest logs, sensor data, and trends).
+- **AI Integration:** Google Vision API / Gemini 3 Flash (for pest detection and risk reasoning).
+- **Hosting:** Vercel (Frontend) & Render (Backend).
+- **Architecture:** Monorepo with `/client` and `/server` folders.

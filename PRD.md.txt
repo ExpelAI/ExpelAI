@@ -1,0 +1,20 @@
+# Product Requirements Document (PRD)
+## ExpelAI – AI-Powered Pest Monitoring for Polyhouse Farming
+
+**Target Users:** Small/mid-scale polyhouse farmers in India (high-value crops like tomato, capsicum).
+
+**The Problem:** Farmers detect pests too late, leading to 15–35% yield loss and over-reliance on chemical pesticides.
+
+**The Solution:** A web-based AI system that monitors crops via images and sensors to provide early detection and chemical-free recommendations.
+
+**Key Features:**
+- AI Pest Detection (2–3 common pests).
+- Risk Level Calculation (Low, Medium, High).
+- Trend Analysis (Pest count graphs over time).
+- Actionable Recommendations (UV light timing, irrigation adjustments).
+- Sensor Integration (Temp, Humidity, Soil Moisture).
+
+**Success Metrics:**
+- Detection and risk update in 10–15 seconds.
+- Functional trend graphs.
+- Working live demo on a public link.
