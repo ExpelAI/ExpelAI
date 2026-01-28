@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Sidebar from "@/components/Dashboard/Sidebar"; // We will create this next
+import MobileNav from "@/components/Dashboard/MobileNav";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,9 +31,11 @@ export default function RootLayout({
         <Sidebar />
 
         {/* The Main Content area changes based on the page you are on */}
-        <main className="flex-1 h-screen overflow-y-auto p-6 md:p-12">
+        <main className="flex-1 h-screen overflow-y-auto p-6 md:p-12 pb-24 md:pb-12">
           {children}
         </main>
+
+        <MobileNav />
       </body>
     </html>
   );
