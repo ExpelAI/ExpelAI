@@ -11,9 +11,8 @@ connectDB();
 // 2. Dynamic CORS Configuration
 // This allows your local dev environment AND your future live site to talk to the API
 const allowedOrigins = [
-    'http://localhost:3000',                  // Local Next.js
-    'https://expel-ai.vercel.app',            // 🛠️ REPLACE with your actual Vercel URL
-    /\.vercel\.app$/                          // Allows any preview deployment from Vercel
+    'http://localhost:3000',
+    'https://expel-ai-frontend.vercel.app' // ⬅️ Add your real link here
 ];
 
 app.use(cors({
