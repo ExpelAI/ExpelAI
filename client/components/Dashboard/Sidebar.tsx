@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 export default function Sidebar() {
     return (
-        <aside className="w-64 bg-slate-950 border-r border-slate-800 h-screen sticky top-0 flex flex-col p-8">
+        <aside className="hidden lg:flex w-64 bg-slate-950 border-r border-slate-800 h-screen sticky top-0 flex-col p-8">
             <div className="mb-12">
                 <h1 className="text-2xl font-black text-white tracking-tighter">
                     EXPEL<span className="text-emerald-500">AI</span>
@@ -37,8 +37,8 @@ function NavLink({ href, label }: { href: string; label: string }) {
         <Link
             href={href}
             className={`block p-4 rounded-2xl font-bold transition-all text-sm border ${isActive
-                    ? "bg-emerald-500/20 border-emerald-500 text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.1)]"
-                    : "bg-slate-900/50 border-slate-800 text-slate-400 hover:bg-emerald-500/10 hover:border-emerald-500/30 hover:text-emerald-400"
+                ? "bg-emerald-500/20 border-emerald-500 text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.1)]"
+                : "bg-slate-900/50 border-slate-800 text-slate-400 hover:bg-emerald-500/10 hover:border-emerald-500/30 hover:text-emerald-400"
                 }`}
         >
             {label}

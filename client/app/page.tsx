@@ -60,7 +60,7 @@ export default function Dashboard() {
                 <p className="text-slate-500 font-medium">Real-time polyhouse climate and pest analytics.</p>
             </header>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                 <StatCard label="Air Temp" value={latest.temperature} color="emerald" />
                 <StatCard label="Humidity" value={latest.humidity} color="blue" />
                 <StatCard label="Soil Moisture" value={latest.soilMoisture} color="cyan" />
