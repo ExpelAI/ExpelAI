@@ -37,17 +37,25 @@ router.post('/detect', upload.single('image'), async (req, res) => {
         const imageBase64 = fs.readFileSync(imagePath).toString('base64');
 
         const prompt = `
-            Analyze this polyhouse leaf image as an Agricultural AI Agent. 
-            Return ONLY a raw JSON object with this EXACT structure:
-            {
-                "pestType": "Specific name of the pest",
-                "count": number,
-                "confidence": number,
-                "severity": "Low" | "Medium" | "High",
-                "reasoning": "Briefly describe specific visual evidence found.",
-                "recommendation": "One specific chemical-free preventive action."
-            }
-        `;
+    Analyze this polyhouse leaf image as an expert Agricultural AI Pathologist.
+    
+    CRITICAL GRADING SCALE FOR SEVERITY:
+    - LOW: Leaf is mostly healthy. Fewer than 5 pests visible OR very minor spotting (<5% of leaf area).
+    - MEDIUM: 5-15 pests visible OR clear signs of curling, yellowing, or holes (5-20% of leaf area).
+    - HIGH: Over 15 pests visible OR severe structural damage, necrosis, or dense webbing (>20% of leaf area).
+
+    If the leaf is perfectly healthy, set pestType to "None", count to 0, and severity to "Low".
+
+    Return ONLY a raw JSON object with this EXACT structure:
+    {
+        "pestType": "Common name of the pest",
+        "count": number,
+        "confidence": number (between 0 and 1),
+        "severity": "Low" | "Medium" | "High",
+        "reasoning": "Explain the specific visual evidence (e.g., 'Found 8 aphids on the underside', 'Yellow halo spots seen').",
+        "recommendation": "Provide one specific, chemical-free organic farming action."
+    }
+`;
 
         const result = await model.generateContent([
             prompt,
