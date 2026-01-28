@@ -37,12 +37,21 @@ export default function Dashboard() {
 
     useEffect(() => { fetchData(); }, [fetchData]);
 
+    // 1. Get the latest sensor data
     const latest: SensorData = sensorData[sensorData.length - 1] || {
         temperature: 0,
         humidity: 0,
         soilMoisture: 0,
         riskLevel: 'Low'
     };
+
+    // 2. Get the latest pest scan severity
+    const latestPest = pestData[pestData.length - 1];
+    const pestRisk = latestPest?.severity || 'Low';
+
+    // 3. Combine them: If EITHER the sensors OR the pests say "High", show "High"
+    const displayRisk = (latest.riskLevel === 'High' || pestRisk === 'High') ? 'High' :
+        (latest.riskLevel === 'Medium' || pestRisk === 'Medium') ? 'Medium' : 'Low';
 
     return (
         <div className="space-y-10">
@@ -55,7 +64,14 @@ export default function Dashboard() {
                 <StatCard label="Air Temp" value={latest.temperature} color="emerald" />
                 <StatCard label="Humidity" value={latest.humidity} color="blue" />
                 <StatCard label="Soil Moisture" value={latest.soilMoisture} color="cyan" />
-                <StatCard label="Env Risk" value={latest.riskLevel} color={latest.riskLevel === 'High' ? 'red' : 'emerald'} />
+
+                {/* ✅ FIXED: Now correctly displays the combined AI + Sensor risk level */}
+                <StatCard
+                    label="System Risk"
+                    value={displayRisk}
+                    // Replace the previous yellow logic with this:
+                    color={displayRisk === 'High' ? 'red' : displayRisk === 'Medium' ? 'red' : 'emerald'}
+                />
             </div>
 
             {/* 📊 FIXED CHART SECTION */}
@@ -67,7 +83,6 @@ export default function Dashboard() {
                     </span>
                 </div>
 
-                {/* 🛠️ The fix: Increased height to h-[500px] and removed the extra shadow */}
                 <div className="h-[500px] w-full overflow-hidden">
                     <PestTrendChart data={pestData} />
                 </div>
