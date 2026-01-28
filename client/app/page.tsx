@@ -69,8 +69,8 @@ export default function Dashboard() {
                 <StatCard
                     label="System Risk"
                     value={displayRisk}
-                    // Replace the previous yellow logic with this:
-                    color={displayRisk === 'High' ? 'red' : displayRisk === 'Medium' ? 'red' : 'emerald'}
+                    // This line ensures Medium is Yellow and High is Red
+                    color={displayRisk === 'High' ? 'red' : displayRisk === 'Medium' ? 'yellow' : 'emerald'}
                 />
             </div>
 
