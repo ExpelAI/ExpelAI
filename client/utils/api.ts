@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/data';
+// ✅ Fixed: Uses the Vercel Environment Variable if it exists, otherwise defaults to localhost
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_URL = `${API_BASE}/api/data`;
 
 export const DataService = {
     getPestDetections: async () => {
