@@ -59,7 +59,15 @@ export default function Dashboard() {
                 <h1 className="text-4xl font-black text-white tracking-tight">System Overview</h1>
                 <p className="text-slate-500 font-medium">Real-time polyhouse climate and pest analytics.</p>
             </header>
-
+            <div className="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl">
+                <p className="text-slate-300 leading-relaxed text-sm">
+                    <span className="text-emerald-400 font-bold">EXPELAI</span> is an advanced agricultural
+                    intelligence platform designed for modern polyhouse management. By combining
+                    <span className="text-white font-medium"> Google Vision AI</span> with real-time
+                    sensor data, we empower farmers to detect pests, monitor system risks, and
+                    protect their crops with 10-second diagnostic precision.
+                </p>
+            </div>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                 <StatCard label="Air Temp" value={latest.temperature} color="emerald" />
                 <StatCard label="Humidity" value={latest.humidity} color="blue" />
